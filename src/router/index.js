@@ -4,8 +4,6 @@ import Router from 'vue-router'
 import login from "../components/app/login/login.vue"
 import reg from "../components/app/reg/reg.vue"
 import info from "../components/app/info/info.vue"
-import student from "../components/app/info/student/student.vue"
-import teacher from "../components/app/info/teacher/teacher.vue"
 Vue.use(Router)
 //调用element-ui
 import 'element-ui/lib/theme-default/index.css'
@@ -36,7 +34,7 @@ export default new Router({
         		next(false)
         	}
       	},
-	    children:[{
+	    /*children:[{
 	    	path:"/info/student",
 	    	name:"student",
 	    	component: student
@@ -44,6 +42,6 @@ export default new Router({
 	    	path:"/info/teacher",
 	    	name:"teacher",
 	    	component:teacher
-	    }]
+	    }]*/
     },]
 })

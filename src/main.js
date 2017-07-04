@@ -13,17 +13,6 @@ import store from "./store/index.js"
 new Vue({
   el: '#app',
   router,
-  // template: `
-  //  <div>
-  //   <App/>
-  //  	<Wrap />
-  //     <Web />
-  //     <app />
-  //     <Wrap_vuex />
-  //     <index />
-  //  </div>
-  // `,
-  // 
   template: `
     <div>
       <index />
