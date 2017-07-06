@@ -1,17 +1,17 @@
 <template>
 	<div class="mingst">
 		<div class="maive">
+			<h1>注册界面</h1>
 			<el-form :model="users" :rules="rules" ref="users" label-width="100px" class="demo-ruleForm">
 			  	<el-form-item label="用户名" prop="username">
-			    	<el-input v-model="users.username" @blur="blurName" ></el-input>
+			    	<el-input v-model="users.username"></el-input>
 			    </el-form-item>
 			    <el-form-item label="密码" prop="password">
 			    	<el-input type="password" v-model="users.password"></el-input>
 			    </el-form-item>
 			</el-form-item>
 			<el-form-item>
-			    <el-button :disabled="button" type="primary" @click="login">注册</el-button>
-			    <el-button type="primary" @click="cancel">取消</el-button>
+			    <el-button type="primary" @click="login">注册</el-button>
 			</el-form-item>
 			</el-form>
 		</div>
