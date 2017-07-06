@@ -111,9 +111,13 @@
 </template>
 <script>
   import {mapActions, mapState} from "vuex"
+  import seatingList from "./seatingList.vue"
   import {MOVIE,STUDIO,THEATER,CREATE,SXHEDULE,REMOVES} from "../../../../store/schedule/schedule.js"
   export default {
     name:"addSchedule",
+    components:{
+      seatingList
+    },
     data() {
       return {
         movievalue:"",
@@ -172,6 +176,9 @@
       }
      },
      seatings(scheduleId){
+       this.$alert(`seatingList`, '购票情况', {
+          confirmButtonText: '确定',
+        });
       console.log(scheduleId.row.id)
      },
      removes(scheduleId){
