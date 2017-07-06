@@ -51,7 +51,7 @@
       			router.push("/info/studio")
       			break;
     			case "4-1":
-      			router.push()
+      			router.push("/info/addSchedule")
       			break;
       	}
       }
