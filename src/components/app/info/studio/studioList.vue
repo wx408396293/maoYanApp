@@ -1,10 +1,10 @@
 <template>
   <div>
   	<!-- 影院列表 -->
-  	<el-table :data="page.data"  border style="width: 800px">
-	    <el-table-column prop="name" label="影院名称" width="200"></el-table-column>
-	    <el-table-column prop="address" label="影院地址" width="500"></el-table-column>
-	    <el-table-column fixed="right" label="操作" width="250" >
+  	<el-table :data="page.data"  border style="width: 100%">
+	    <el-table-column prop="name" label="影院名称" width="300"></el-table-column>
+	    <el-table-column prop="address" label="影院地址" min-width="500"></el-table-column>
+	    <el-table-column label="操作"  width="250">
 	      <template scope="scope">
 	        <el-button type="text" size="small" @click="addTheaterBtn(scope.row)">新增放映厅</el-button>
 	        <el-button type="text" size="small" @click="updateStudioBtn(scope.row)">修改</el-button>
@@ -14,14 +14,16 @@
 	    </el-table-column>
   	</el-table>
 		<!-- 影院分页信息 -->
-		<el-pagination
-      @size-change="setEachpage"
-      @current-change="setCurpage"
-      :page-sizes="[5, 10]"
-      :page-size="~~page.eachPage"
-      layout="total, sizes, prev, pager, next"
-      :total="page.count">
-    </el-pagination>
+    <div class="studio-page">
+      <el-pagination
+        @size-change="setEachpage"
+        @current-change="setCurpage"
+        :page-sizes="[5, 10]"
+        :page-size="~~page.eachPage"
+        layout="total, sizes, prev, pager, next"
+        :total="page.count">
+      </el-pagination>
+    </div>
 		<!-- 新增影厅 -->
 		<el-dialog title="新增影厅" :visible.sync="theaterData.addTheaterState" size="tiny">
       <el-form >
@@ -32,8 +34,7 @@
         </el-form-item>
       </el-form>
       <div slot="footer" class="dialog-footer">
-        <el-button size="small" class="btn" @click="theaterData.name=''">重 置</el-button>
-        <el-button size="small" class="btn" @click="theaterData.addTheaterState = false">取 消</el-button>
+        <el-button size="small" class="btn" @click="cancelAddTheater">取 消</el-button>
         <el-button type="primary" size="small" class="btn" @click="addTheater">确 定</el-button>
       </div>
     </el-dialog>
@@ -68,14 +69,16 @@
           </template>
         </el-table-column>
       </el-table>
-      <el-pagination
-        @size-change="setTheaterEachpage"
-        @current-change="setTheaterCurpage"
-        :page-sizes="[5, 10]"
-        :page-size="~~theaterPage.eachPage"
-        layout="total, sizes, prev, pager, next"
-        :total="theaterPage.count">
-      </el-pagination>
+      <div class="theater-page">
+        <el-pagination
+          @size-change="setTheaterEachpage"
+          @current-change="setTheaterCurpage"
+          :page-sizes="[5, 10]"
+          :page-size="~~theaterPage.eachPage"
+          layout="total, sizes, prev, pager, next"
+          :total="theaterPage.count">
+        </el-pagination>
+      </div>
     </el-dialog>
 		<!-- 修改影厅信息 -->
     <el-dialog title="修改影厅信息" :visible.sync="theaterData.updateTheaterState" size="tiny">
@@ -198,6 +201,11 @@ export default {
       	alert('影厅名字不能为空');
       }     
     },
+    //新增影厅取消按钮
+    cancelAddTheater() {
+      this.theaterData.addTheaterState = false,
+      this.theaterData.name = ""
+    },
   	updateStudioBtn(row) {
   		//显示弹出框
   		this.updateStudioState = true
@@ -303,5 +311,15 @@ export default {
 <style scoped>
 .btn {
   width: 80px;
+}
+.studio-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+.theater-page {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
 }
 </style>
