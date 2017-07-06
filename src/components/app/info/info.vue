@@ -1,6 +1,6 @@
 <template>
 	<el-row :gutter="20">
-		<el-col :span="4">
+		<el-col :xs="8" :sm="6" :md="4" :lg="3">
 			<el-tree
 			  :data="data"
 			  :props="defaultProps"
@@ -9,9 +9,8 @@
 			  @current-change="add">
 			</el-tree>
 		</el-col>
-		<el-col :span="20">
-			<div style="background: #333">aaa</div>
-			<!-- <router-view></router-view>	 -->
+		<el-col :xs="16" :sm="18" :md="20" :lg="21">
+			<router-view></router-view>
 		</el-col>
 	</el-row>
 	<!-- <div class="mingst">
@@ -67,10 +66,12 @@
 	    };
     },
     methods: {
-      handleNodeClick(data) {
-      },
       add(data){
-      	// console.log(data)
+      	switch(data.label) {
+      		case  "新增排片":
+      			router.push("/info/addSchedule")
+      			break;
+      	}
       }
     }
 	}
@@ -97,5 +98,8 @@
 	}
 	ul{
 		width: 150px;
+	}
+	.content{
+		margin-top: 30px;
 	}
 </style>
