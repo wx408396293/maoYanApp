@@ -13,16 +13,19 @@ const app ={
   //actions异步
   actions:{
     async LOGIN(context,{username,password}) {
-        const {data} =  await axios.post('http://localhost:3001/users/login', {
-          "username" :username,
-          "password" : password,
-        })
-          if (data) {
+        // const {data} =  await axios.post('http://localhost:3001/users/login', {
+        //   "username" :username,
+        //   "password" : password,
+        // })
+          // if (data) {
+          //   localStorage.isLogin = true
+          //   router.push("/info")
+          // }else {
+          //   localStorage.isLogin = false
+          // }
             localStorage.isLogin = true
             router.push("/info")
-          }else {
-            localStorage.isLogin = false
-          }
+
       }
   },
   //派生属性

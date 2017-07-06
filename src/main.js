@@ -3,27 +3,19 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router/index.js'
-
+import 'element-ui/lib/theme-default/index.css'
+import ElementUI from 'element-ui'
+Vue.use(ElementUI)
 import index from "./components/app/index"
 
 Vue.config.productionTip = false
 
 import store from "./store/index.js"
+
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  // template: `
-  //  <div>
-  //   <App/>
-  //  	<Wrap />
-  //     <Web />
-  //     <app />
-  //     <Wrap_vuex />
-  //     <index />
-  //  </div>
-  // `,
-  // 
   template: `
     <div>
       <index />

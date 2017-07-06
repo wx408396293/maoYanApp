@@ -3,6 +3,8 @@
 		<ul>
 		    <li><router-link :to="'/info/student'">学生信息</router-link></li>
 		   	<li><router-link :to="'/info/teacher'">老师信息</router-link></li>
+		   	<li><router-link :to="'/info/studio'">影院管理</router-link></li>
+		   	<li><router-link :to="'/info/theater'">影厅管理</router-link></li>
 		</ul>
 		<div>
 			<router-view></router-view>	
