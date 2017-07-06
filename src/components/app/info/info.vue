@@ -67,11 +67,15 @@
 .nav {
 	width: 180px;
 	background-color: #eef1f6;
-	height: 100vh;
+	height: 90vh;
+	position: fixed;
+	left: 0;
+	top: 112px;
 }
 .warp {
 	width: 85%;
-	margin-left: 20px;
-	margin-top: 20px;
+	margin-left: 200px;
+	margin-top: 120px;
+	margin-bottom: 100px;
 }
 </style>

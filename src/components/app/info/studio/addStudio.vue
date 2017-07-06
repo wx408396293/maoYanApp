@@ -68,6 +68,8 @@ export default {
           address: this.ruleForm.address
         });
         if (data) {
+          this.ruleForm.name = "";
+          this.ruleForm.address = ""
           alert('新增成功');
         } else {
           alert('新增失败');

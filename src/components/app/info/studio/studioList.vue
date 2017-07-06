@@ -9,15 +9,15 @@
 	        <el-button type="text" size="small" @click="addTheaterBtn(scope.row)">新增放映厅</el-button>
 	        <el-button type="text" size="small" @click="updateStudioBtn(scope.row)">修改</el-button>
 	        <el-button type="text" size="small" @click="deleteStudio(scope.row)">删除</el-button>
-	        <el-button type="text" size="small" @click="getTheaterList(scope.row)">查看放映厅</el-button>
+	        <el-button type="text" size="small" @click="getTheaterListBtn(scope.row)">查看放映厅</el-button>
 	      </template>
 	    </el-table-column>
   	</el-table>
 		<!-- 影院分页信息 -->
     <div class="studio-page">
       <el-pagination
-        @size-change="setEachpage"
-        @current-change="setCurpage"
+        @size-change="setStudioEachpage"
+        @current-change="setStudioCurpage"
         :page-sizes="[5, 10]"
         :page-size="~~page.eachPage"
         layout="total, sizes, prev, pager, next"
@@ -125,7 +125,7 @@ export default {
     	//影院数据
     	page: {
 				curPage: 1,
-				eachPage: 10,
+				eachPage: 5,
 				maxPage: 1,
 				count: 1,
 				data: []
@@ -169,6 +169,7 @@ export default {
   	this.getStudio()
   },
   methods: {
+    //获取影院信息
   	async getStudio() {
   		const {
 				data
@@ -178,7 +179,6 @@ export default {
 					rows: this.page.eachPage
 				}
 			})
-
 			this.page.data = data.rows
 			this.page.count = data.total
   	},
@@ -186,6 +186,7 @@ export default {
   		this.theaterData.addTheaterState = true
   		this.studioData.studioId = row._id
   	},
+    //新增影厅
   	async addTheater() {
       if (this.theaterData.name !== "" && this.studioData.studioId !== "") {
         const {
@@ -238,16 +239,18 @@ export default {
   		})
   		this.getStudio()
   	},
-  	getTheaterList(row) {
+    //查看影厅列表按钮
+  	getTheaterListBtn(row) {
   		this.studioData.studioId = row._id
   		this.theaterData.theaterListState = true
   		this.getTheater()
   	},
-    setEachpage(val) {
+    //改变影院分页信息
+    setStudioEachpage(val) {
       this.page.eachPage = val
       this.getStudio()
     },
-    setCurpage(val) {
+    setStudioCurpage(val) {
       this.page.curPage = val
       this.getStudio()
     },
@@ -271,6 +274,7 @@ export default {
       this.theaterData.name = row.name,
       this.theaterData.theaterId = row._id
     },
+    //修改影厅信息
     async updateTheater() {
       this.theaterData.updateTheaterState = false
       const {
@@ -284,6 +288,7 @@ export default {
       this.theaterData.name = ""
       this.getTheater()
     },
+    //删除影厅
     async deleteTheater(row) {
       this.theaterData.theaterId = row._id 
       const {
@@ -296,6 +301,7 @@ export default {
       })
       this.getTheater()
     },
+    //影厅列表分页信息
     setTheaterEachpage(val) {
       this.theaterPage.eachPage = val
       this.getTheater()

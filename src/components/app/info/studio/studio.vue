@@ -35,7 +35,7 @@ export default {
   line-height: 50px;
   color: #666;
   background-color: #f2f2f2;
-  padding-left: 10px;
+  padding-left: 15px;
   margin-bottom: 20px;
 }
 </style>
