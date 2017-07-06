@@ -4,13 +4,10 @@ import Router from 'vue-router'
 import login from "../components/app/login/login.vue"
 import reg from "../components/app/reg/reg.vue"
 import info from "../components/app/info/info.vue"
-import student from "../components/app/info/student/student.vue"
-import teacher from "../components/app/info/teacher/teacher.vue"
 import studio from "../components/app/info/studio/studio.vue"
-import theater from "../components/app/info/theater/theater.vue"
 
 Vue.use(Router)
-  //调用element-ui
+//调用element-ui
 import 'element-ui/lib/theme-default/index.css'
 import ElementUI from 'element-ui'
 Vue.use(ElementUI)
@@ -40,17 +37,11 @@ export default new Router({
       }
     },
     children: [{
-      path: "/info/student",
-      name: "student",
-      component: student
-    }, {
-      path: "/info/teacher",
-      name: "teacher",
-      component: teacher
-    }, {
       path: "/info/studio",
       name: "studio",
       component: studio
     }]
   }]
 })
+
+

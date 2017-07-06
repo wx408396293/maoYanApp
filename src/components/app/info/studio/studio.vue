@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>影院</h1>
+    <h2 class="studi-itle">影院管理</h2>
     <el-tabs type="border-card" class="studio">
       <el-tab-pane label="新增影院">
         <add-studio />
@@ -38,5 +38,7 @@ export default {
 .studio {
   width: 800px;
 }
-
+.studi-itle {
+  color: #666;
+}
 </style>
