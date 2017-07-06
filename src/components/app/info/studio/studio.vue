@@ -1,8 +1,8 @@
 <template>
   <div>
-    <h2 class="studi-itle">影院管理</h2>
+    <h3 class="studi-itle">影院管理</h3>
     <el-tabs type="border-card" class="studio">
-      <el-tab-pane label="新增影院">
+      <el-tab-pane label="新增影院" >
         <add-studio />
       </el-tab-pane>
       <el-tab-pane label="影院列表">
@@ -22,23 +22,20 @@ export default {
   components: {
     addStudio,
     studioList
-  },
-  data() {
-    return {
-      
-    }
-  },
-  methods: {
-    
   }
 }
 </script>
 
 <style scoped>
 .studio {
-  width: 800px;
+  width: 100%;
 }
 .studi-itle {
+  height: 50px;
+  line-height: 50px;
   color: #666;
+  background-color: #f2f2f2;
+  padding-left: 10px;
+  margin-bottom: 20px;
 }
 </style>

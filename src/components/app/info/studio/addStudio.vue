@@ -45,8 +45,8 @@ export default {
     };
     return {
       ruleForm: {
-        name: '金沙万达',
-        address: '文化宫',
+        name: '',
+        address: '',
       },
       rules: {
         name: [
@@ -60,17 +60,21 @@ export default {
   },
   methods: {
   	async submitForm() {
-  		const {
-				data
-			} = await axios.post("http://localhost:3001/studio/addStudio", {		
-				name: this.ruleForm.name,
-				address: this.ruleForm.address
-			});
-			if (data) {
-        alert('新增成功');
+      if (this.ruleForm.name !== "" && this.ruleForm.address !== "") {
+        const {
+          data
+        } = await axios.post("http://localhost:3001/studio/addStudio", {    
+          name: this.ruleForm.name,
+          address: this.ruleForm.address
+        });
+        if (data) {
+          alert('新增成功');
+        } else {
+          alert('新增失败');
+        }
       } else {
-        alert('新增失败');
-      }
+        alert('请输入完整信息');
+      } 		
     },
     resetForm() {
       this.ruleForm = {

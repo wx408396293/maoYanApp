@@ -1,77 +1,56 @@
 <template>
-	<el-row :gutter="20">
-		<el-col :xs="8" :sm="6" :md="4" :lg="3">
-			<el-tree
-			  :data="data"
-			  :props="defaultProps"
-			  :highlight-current = true
-			  accordion
-			  @current-change="add">
-			</el-tree>
-		</el-col>
-		<el-col :xs="16" :sm="18" :md="20" :lg="21">
-			<router-view></router-view>
-		</el-col>
-	</el-row>
+  <div class="info">
+  		<div class="nav">
+  			<el-menu default-active="1" class="el-menu-vertical-demo" @select="handleSelect">
+			    <el-submenu index="1">
+			      <template slot="title"><i class="el-icon-menu"></i>用户</template>
+			        <el-menu-item index="1-1">新增用户</el-menu-item>
+			        <el-menu-item index="1-2">修改用户</el-menu-item>
+			    </el-submenu>
+			    <el-submenu index="2">
+			    	<template slot="title"><i class="el-icon-menu"></i>电影</template>
+			    		<el-menu-item index="2-1">新增电影</el-menu-item>
+			        <el-menu-item index="2-2">修改电影</el-menu-item>
+			    </el-submenu>
+			    <el-submenu index="3">
+			    	<template slot="title"><i class="el-icon-menu"></i>影院</template>
+			    		<el-menu-item index="3-1">影院管理</el-menu-item>
+			    </el-submenu>
+			    <el-submenu index="4">
+			    	<template slot="title"><i class="el-icon-menu"></i>排片</template>
+			    		<el-menu-item index="4-1">排片管理</el-menu-item>
+			    </el-submenu>
+			  </el-menu>
+  		</div>
+		  <div class="warp">
+		  	<router-view></router-view>
+		  </div>
+  </div>
 </template>
 
 <script>
 	import router from "../../../router/index.js"
-
 	export default {
-		name:"info",
-		data() {
-	      return {
-	        data: [{
-	          label: '用户',
-	          children: [{
-	            label: '新增用户',
-	          }, {
-	            label: '修改用户',
-	          }]
-	        },{
-	          label: '电影',
-	          children: [ {
-	            label: '新增电影',
-	          }, {
-	            label: '修改电影',
-	          }]
-	        },{
-	          label: '影院',
-	          children: [{
-	            label: '影院管理'
-	          }]
-	        },{
-	          label: '排片',
-	          children: [{
-	            label: '新增排片',
-	          }]
-	        }],
-	        defaultProps: {
-	          children: 'children',
-	          label: 'label'
-	        }
-	    };
-    },
+		name:"info",	
     methods: {
-      add(data){
-      	switch(data.label) {
-      		case "新增用户":
+      handleSelect(key) {
+        switch(key) {
+      		case "1-1":
       			router.push()
       			break;
-      		case "修改用户":
+      		case "1-2":
       			router.push()
       			break;
-    			case "新增电影":
+    			case "2-1":
       			router.push()
       			break;
-    			case "修改电影":
+    			case "2-2":
       			router.push()
       			break;	
-      		case "影院管理":
+      		case "3-1":
       			router.push("/info/studio")
       			break;
-    			case "新增排片":
+    			case "4-1":
       			router.push("/info/addSchedule")
       			break;
       	}
@@ -81,28 +60,18 @@
 </script>
 
 <style scoped>
-	.mingst{
-		width: 100%;
-		min-height: 100vh;
-		display: flex;
-		flex-wrap: nowrap;
-		justify-content: flex-basis;
-		flex-direction:  row;
-		align-items: flex-start;
-	}
-	.maive{
-		width: 300px;
-		display: flex;
-		flex-wrap: wrap;
-		justify-content: center;
-		flex-direction:  row;
-		align-items: center;
-
-	}
-	ul{
-		width: 150px;
-	}
-	.content{
-		margin-top: 30px;
-	}
+.info {
+	display: flex;
+	padding-right: 20px;
+}
+.nav {
+	width: 180px;
+	background-color: #eef1f6;
+	height: 100vh;
+}
+.warp {
+	width: 85%;
+	margin-left: 20px;
+	margin-top: 20px;
+}
 </style>
