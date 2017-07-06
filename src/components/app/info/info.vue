@@ -13,16 +13,6 @@
 			<router-view></router-view>
 		</el-col>
 	</el-row>
-	<!-- <div class="mingst">
-		<ul>
-		    <li><router-link :to="'/info/student'">学生信息</router-link></li>
-		   	<li><router-link :to="'/info/teacher'">老师信息</router-link></li>
-		</ul>
-		
-		<div class="content">
-			<router-view></router-view>	
-		</div>
-	</div> -->
 </template>
 
 <script>
@@ -50,8 +40,6 @@
 	          label: '影院',
 	          children: [{
 	            label: '影院管理'
-	          }, {
-	            label: '影厅管理',
 	          }]
 	        },{
 	          label: '排片',
@@ -68,7 +56,22 @@
     methods: {
       add(data){
       	switch(data.label) {
-      		case  "新增排片":
+      		case "新增用户":
+      			router.push()
+      			break;
+      		case "修改用户":
+      			router.push()
+      			break;
+    			case "新增电影":
+      			router.push()
+      			break;
+    			case "修改电影":
+      			router.push()
+      			break;	
+      		case "影院管理":
+      			router.push("/info/studio")
+      			break;
+    			case "新增排片":
       			router.push("/info/addSchedule")
       			break;
       	}

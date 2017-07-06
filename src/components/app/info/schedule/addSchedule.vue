@@ -116,9 +116,9 @@
     name:"addSchedule",
     data() {
       return {
-        movievalue:"595c3dd87f16da1ce032eef3",
-        studiosvalue:"595c40117f16da1ce032ef04",
-        theatersvalue:"595c40307f16da1ce032ef06",
+        movievalue:"",
+        studiosvalue:"",
+        theatersvalue:"",
         time: '',
         money :"",
         page: 1,

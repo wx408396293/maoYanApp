@@ -5,6 +5,8 @@ import login from "../components/app/login/login.vue"
 import reg from "../components/app/reg/reg.vue"
 import info from "../components/app/info/info.vue"
 import addSchedule from "../components/app/info/schedule/addSchedule.vue"
+import studio from "../components/app/info/studio/studio.vue"
+
 Vue.use(Router)
 //调用element-ui
 import 'element-ui/lib/theme-default/index.css'
@@ -39,6 +41,12 @@ export default new Router({
   	    	path:"/info/addSchedule",
   	    	name:"addSchedule",
   	    	component: addSchedule
-  	    }]
+  	    },{
+          path: "/info/studio",
+          name: "studio",
+          component: studio
+        }]
     }]
 })
+
+
