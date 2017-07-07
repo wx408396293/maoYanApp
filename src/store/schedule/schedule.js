@@ -6,6 +6,7 @@ export const THEATER ="THEATER"
 export const CREATE ="CREATE"
 export const SXHEDULE="SXHEDULE"
 export const REMOVES ="REMOVES"
+export const SEATING ="SEATING"
 const app ={
   namespaced: true,
   state:{
@@ -13,6 +14,7 @@ const app ={
      studios: [], 
      theaters:[],
      schedule:[],
+     seatingData:[],
      totals:0,
      // value: 'zhinan',
       // label: '指南',
@@ -83,6 +85,7 @@ const app ={
       context.state.totals= data.total
       context.state.schedule=data.rows
     },
+    //删除排片
     async REMOVES(context,{scheduleId,movieId,studioId,theaterId,page,rows}){
       const data=  await axios.get('http://localhost:3001/schedule/removes',{
         params:{
@@ -90,7 +93,24 @@ const app ={
         }
       })
       context.dispatch("SXHEDULE",{movieId,studioId,theaterId,page,rows})
+    },
+    //查询座位信息
+    async SEATING(context,{scheduleId}){
+      const {data}=  await axios.get('http://localhost:3001/schedule/seatingQuery',{
+        params:{
+          scheduleId
+        }
+      })
+      context.state.seatingData = []
+      data.forEach((item)=>{
+        context.state.seatingData.push({
+          states:item.state  === 0 ?'已售出':'未售出',
+          displayName:item.seatId.displayName,
+          _id:item._id
+        })
+      })
     }
+
   },
   //派生属性
   getters:{

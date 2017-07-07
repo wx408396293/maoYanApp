@@ -107,17 +107,27 @@
         </el-pagination>
       </el-col>
     </el-row>
+
+<!-- 弹窗 -->
+    <el-dialog title="售票信息" :visible.sync="dialogTableVisible">
+      <el-table :data="seatingData">
+        <el-table-column property="displayName" label="座位名"></el-table-column>
+        <el-table-column property="states" label="售票情况"></el-table-column>
+        <el-table-column prop="name" label="操作">
+              <template scope="scope">
+                <el-button size="small" @click="listSeating(scope)">查看售票</el-button>
+              </template>
+            </el-table-column>
+      </el-table>
+    </el-dialog>
 	</div>
 </template>
 <script>
   import {mapActions, mapState} from "vuex"
-  import seatingList from "./seatingList.vue"
-  import {MOVIE,STUDIO,THEATER,CREATE,SXHEDULE,REMOVES} from "../../../../store/schedule/schedule.js"
+  import {MOVIE,STUDIO,THEATER,CREATE,SXHEDULE,REMOVES,SEATING} from "../../../../store/schedule/schedule.js"
   export default {
     name:"addSchedule",
-    components:{
-      seatingList
-    },
+    components:{},
     data() {
       return {
         movievalue:"",
@@ -128,7 +138,12 @@
         page: 1,
         rows: 10,
         currentPage4:1,
-        paging:[5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100]
+        paging:[5,10,15,20,25,30,35,40,45,50,55,60,65,70,75,80,85,90,95,100],
+        dialogTableVisible: false,
+        gridData: [{
+          date: '2016-05-02',
+          name: '王小虎',
+        }],
       }; 
     },
     created(){
@@ -143,10 +158,10 @@
       // this.scheduleList()
     },
     computed:{
-      ...mapState("schedule",["movies","studios","theaters","schedule","totals"])
+      ...mapState("schedule",["movies","studios","theaters","schedule","totals","seatingData"])
     },
     methods: {
-     ...mapActions("schedule",["MOVIE","STUDIO","THEATER","CREATE","SXHEDULE","REMOVES"]),
+     ...mapActions("schedule",["MOVIE","STUDIO","THEATER","CREATE","SXHEDULE","REMOVES" ,"SEATING"]),
      getTheater(){
         this.THEATER(this.studiosvalue)
         this.scheduleList()
@@ -176,10 +191,10 @@
       }
      },
      seatings(scheduleId){
-       this.$alert(`seatingList`, '购票情况', {
-          confirmButtonText: '确定',
-        });
-      console.log(scheduleId.row.id)
+      this.SEATING({
+        "scheduleId": scheduleId.row.id
+      })
+      this.dialogTableVisible = true
      },
      removes(scheduleId){
        this.REMOVES({
@@ -198,6 +213,9 @@
      handleCurrentChange(val){
       this.page = val
       this.scheduleList()
+     },
+     listSeating(seatingId){
+      console.log(seatingId.row._id)
      }
     }
   };
