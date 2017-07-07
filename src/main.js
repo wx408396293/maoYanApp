@@ -10,7 +10,8 @@ import index from "./components/app/index"
 Vue.config.productionTip = false
 
 import store from "./store/index.js"
-
+//引入CSS文件
+import "./css/index.css"
 /* eslint-disable no-new */
 new Vue({
   el: '#app',
