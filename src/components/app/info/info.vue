@@ -32,30 +32,30 @@
 	import router from "../../../router/index.js"
 	export default {
 		name:"info",	
-    methods: {
-      handleSelect(key) {
-        switch(key) {
-      		case "1-1":
-      			router.push()
-      			break;
-      		case "1-2":
-      			router.push()
-      			break;
-    			case "2-1":
-      			router.push()
-      			break;
-    			case "2-2":
-      			router.push()
-      			break;	
-      		case "3-1":
-      			router.push("/info/studio")
-      			break;
-    			case "4-1":
-      			router.push("/info/addSchedule")
-      			break;
-      	}
-      }
-    }
+	    methods: {
+	      handleSelect(key) {
+	        switch(key) {
+	      		case "1-1":
+	      			// router.push()
+	      			break;
+	      		case "1-2":
+	      			// router.push()
+	      			break;
+	    			case "2-1":
+	      			router.push("/info/movie/addMovie")
+	      			break;
+	    			case "2-2":
+	      			router.push("/info/movie/movieList")
+	      			break;	
+	      		case "3-1":
+	      			router.push("/info/studio")
+	      			break;
+	    			case "4-1":
+	      			router.push("/info/addSchedule")
+	      			break;
+	      	}
+	      }
+	    }
 	}
 </script>
 
@@ -63,6 +63,7 @@
 .info {
 	display: flex;
 	padding-right: 20px;
+
 }
 .nav {
 	width: 180px;
