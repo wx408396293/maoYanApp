@@ -53,8 +53,9 @@ const app ={
   },
   //派生属性
   getters:{
-     
+ 
   }
 }
-
+//
+//
 export default app
